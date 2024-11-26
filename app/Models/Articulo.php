@@ -9,4 +9,9 @@ class Articulo extends Model
 {
     /** @use HasFactory<\Database\Factories\ArticuloFactory> */
     use HasFactory;
+
+    public function departamentos()
+    {
+        return $this->belongsToMany(Departamento::class);
+    }
 }
