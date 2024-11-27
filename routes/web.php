@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\DepartamentoController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ProfileController;
@@ -34,5 +35,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('departamentos', DepartamentoController::class);
 Route::resource('empleados', EmpleadoController::class);
+Route::resource('articulos', ArticuloController::class);
 
 require __DIR__.'/auth.php';

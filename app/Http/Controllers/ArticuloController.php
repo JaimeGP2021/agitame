@@ -12,7 +12,9 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        //
+        return view('articulos.index', [
+            'articulos' => Articulo::all(),
+        ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        //
+        return view('articulos.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'codigo' => 'required|max:6|unique:articulos,codigo',
+            'descripcion' => 'required|string|max:255',
+            'precio' => 'required|numeric',
+        ]);
+        $articulo = Articulo::create($validated);
+        session()->flash('exito', 'Artículo creado correctamente.');
+        return redirect()->route('articulos.index', $articulo);
     }
 
     /**
