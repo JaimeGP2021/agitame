@@ -35,9 +35,9 @@ class ArticuloController extends Controller
             'descripcion' => 'required|string|max:255',
             'precio' => 'required|numeric',
         ]);
-        $articulo = Articulo::create($validated);
+        Articulo::create($validated);
         session()->flash('exito', 'Artículo creado correctamente.');
-        return redirect()->route('articulos.index', $articulo);
+        return redirect()->route('articulos.index');
     }
 
     /**
